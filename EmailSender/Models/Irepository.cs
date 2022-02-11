@@ -7,7 +7,7 @@ namespace EmailSender.Models
 {
     public interface IRepository
     {
-        public bool Send();
+        public bool Add(Mail data);
         public void GetData();
     }
 }

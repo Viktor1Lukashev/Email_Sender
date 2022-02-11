@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace EmailSender
 {
-    public class StandartSend : IRepository
+    public class DbWorker : IRepository
 
     {
         private MailsDB _context;
-        public StandartSend(MailsDB context) 
+        public DbWorker(MailsDB context) 
         {
             _context = context;
         }
@@ -19,9 +19,10 @@ namespace EmailSender
             throw new NotImplementedException();
         }
 
-        public bool Send()
+        public bool Add(Mail data)
         {
-            throw new NotImplementedException();
+            _context.Add(data);
+            return true;
         }
     }
 }

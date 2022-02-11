@@ -8,6 +8,7 @@ namespace EmailSender.Models
 {
     public class MailsDB:DbContext
     {
+        DbSet<Mail> Mails { get; set; }
         public MailsDB(DbContextOptions<MailsDB> options) : base(options)
         {
             Database.EnsureCreated();

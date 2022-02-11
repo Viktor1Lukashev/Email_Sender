@@ -11,11 +11,14 @@ namespace EmailSender.Controllers
 {
     public class HomeController : Controller
     {
+      
      
         private IRepository _sender;
+      
         public HomeController(IRepository sender)
         {
                 _sender = sender;
+                
         }
 
         public IActionResult Index()
@@ -24,13 +27,15 @@ namespace EmailSender.Controllers
         }
 
 
-        public IActionResult Send(DataForSend data)
+        public IActionResult Send(Mail data)
         {
 
-            data.data = DateTime.UtcNow;
-            return View();
 
-            
+            data.Date = DateTime.Now;
+            _sender.Send(data);
+            return true;
+
+
         }
     }
 }
